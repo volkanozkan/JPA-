@@ -24,25 +24,25 @@
             <th>Name</th>
             <th>Quantity</th>
             <th>Price</th>
+            <th>Currency</th>
             <th>Attributes</th>
             <th>SubCategory</th>
             <th>Supplier</th>
-            <c:forEach items="${requestScope.list}" var="product" >
+            <c:forEach items="${requestScope.list}" var="product" varStatus="status">
                 <tr>
                     <td>${product.id}</td>
                     <td>${product.barcode}</td>
                     <td>${product.name}</td>
                     <td>${product.quantity}</td>
                     <td>${product.price}</td>
+                    <c:forEach items="${requestScope.list2}" var="symbol" >
+                    <td>${symbol}</td>
+                    </c:forEach>
                     <td>${product.attributes}</td>
                     <td>${product.subcategoryid}</td>
-                    <td>${product.supplierid}</td>                   
-            </tr>
+                    <td>${product.supplierid}</td> 
+                </tr>
             </c:forEach>  
-              
-
-
         </table>
-
     </body>
 </html>

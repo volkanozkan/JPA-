@@ -6,8 +6,11 @@
 package controller;
 
 import dao.ProductDAOImpl;
+import factoryCurrency.Currency;
+import factoryCurrency.CurrencyFactory;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.LinkedList;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
@@ -27,11 +30,21 @@ public class AllProducts extends HttpServlet
     @EJB private ProductDAOImpl productDAO;
     private Logger logger = Logger.getRootLogger();
     
+    
+    String country = "US";
+    Currency curr = CurrencyFactory.createCurrency(country);
+    String symbol = curr.getSymbol();
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException 
     {
         List list = productDAO.getAllProducts();
         request.setAttribute("list", list);
+        
+        List list2 = new LinkedList();
+        list2.add(symbol);
+        request.setAttribute("list2", list2);
+       
         request.getRequestDispatcher("allproducts.jsp").forward(request, response);
         logger.debug("Products are listed..");
     }

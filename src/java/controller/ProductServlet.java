@@ -41,9 +41,7 @@ public class ProductServlet extends HttpServlet {
         
         String barcod = request.getParameter("barcode");
        
-        
         String name = request.getParameter("name");
-        
         
         String quantity = request.getParameter("quantity");
         int quantit = Integer.valueOf(quantity);
@@ -51,9 +49,7 @@ public class ProductServlet extends HttpServlet {
         String price = request.getParameter("price");
         Double pricee = Double.valueOf(price);
         
-        
         String attributes = request.getParameter("attributes");
-        
         
         String ctgId = request.getParameter("catid");
         int catid = Integer.parseInt(ctgId);
@@ -61,7 +57,6 @@ public class ProductServlet extends HttpServlet {
         String sup = request.getParameter("supid");
         int supid = Integer.parseInt(sup);
        
-        
         String operation = request.getParameter("operation");
         
         Subcategory subcategory = subCategoryDAO.getSubcategory(catid);
@@ -76,6 +71,7 @@ public class ProductServlet extends HttpServlet {
         product.setSupplierid(supplier);
         product.setSubcategoryid(subcategory);
         
+
        if (operation.equalsIgnoreCase("Add")) 
         {
             productDAO.addProduct(product);

@@ -5,7 +5,7 @@
  */
 package controller;
 
-import db.CategoryDAO;
+import dao.CategoryDAOImpl;
 import java.io.IOException;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
@@ -14,9 +14,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.Category;
-import org.apache.log4j.BasicConfigurator;
-import org.apache.log4j.Level;
-import org.apache.log4j.Logger;
+import org.apache.log4j.*;
 
 /**
  *
@@ -26,7 +24,7 @@ import org.apache.log4j.Logger;
 public class CategoryServlet extends HttpServlet {
 
     @EJB
-    private CategoryDAO categoryDAO;
+    private CategoryDAOImpl categoryDAO;
 
     private Logger logger = Logger.getRootLogger();
     

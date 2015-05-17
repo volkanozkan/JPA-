@@ -5,7 +5,7 @@
  */
 package controller;
 
-import db.ProductDAO;
+import dao.ProductDAOImpl;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -22,9 +22,9 @@ import org.apache.log4j.Logger;
  * @author VolkanOzkan
  */
 @WebServlet(name = "AllProducts", urlPatterns = {"/AllProducts"})
-public class AllProducts extends HttpServlet {
-
-    @EJB private ProductDAO productDAO;
+public class AllProducts extends HttpServlet 
+{
+    @EJB private ProductDAOImpl productDAO;
     private Logger logger = Logger.getRootLogger();
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)

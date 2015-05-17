@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package db;
+package dao;
 
 import java.util.List;
 import javax.ejb.LocalBean;
@@ -18,31 +18,36 @@ import model.Product;
  */
 @Stateless
 @LocalBean
-public class ProductDAO 
+public class ProductDAOImpl implements ProductDAO
 {
     @PersistenceContext private EntityManager em;
     
+    @Override
     public void addProduct(Product product)
     {
         em.persist(product);
     }
     
+    @Override
     public void editProduct(Product product)
     {
         em.merge(product);
     }
     
+    @Override
     public void deleteProduct(int name)
     {
         Product product = em.find(Product.class, name);
         em.remove(product);
     }
    
+    @Override
     public Product getProduct(int id)
     {
         return em.find(Product.class, id);
     }
    
+    @Override
     public List getAllProducts()
     {
         return em.createNamedQuery("Product.getAll").getResultList();

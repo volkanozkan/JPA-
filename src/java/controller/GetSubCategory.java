@@ -5,8 +5,8 @@
  */
 package controller;
 
-import db.CategoryDAO;
-import db.SubCategoryDAO;
+import dao.CategoryDAOImpl;
+import dao.SubCategoryDAOImpl;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -25,8 +25,8 @@ import model.Subcategory;
 @WebServlet(name = "GetSubCategory", urlPatterns = {"/GetSubCategory"})
 public class GetSubCategory extends HttpServlet {
 
-    @EJB private SubCategoryDAO subCategoryDAO;
-    @EJB private CategoryDAO categoryDAO;
+    @EJB private SubCategoryDAOImpl subCategoryDAO;
+    @EJB private CategoryDAOImpl categoryDAO;
    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException 

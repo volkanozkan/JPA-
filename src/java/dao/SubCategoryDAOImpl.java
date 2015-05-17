@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package db;
+package dao;
 
 import java.util.List;
 import javax.ejb.LocalBean;
@@ -18,31 +18,36 @@ import model.Subcategory;
  */
 @Stateless
 @LocalBean
-public class SubCategoryDAO
+public class SubCategoryDAOImpl implements SubCategoryDAO
 {
     @PersistenceContext private EntityManager em;
     
+    @Override
     public void addSubcategory(Subcategory subCategory)
     {
         em.persist(subCategory);
     }
     
+    @Override
     public void editSubcategory(Subcategory subCategory)
     {
         em.merge(subCategory);
     }
     
+    @Override
     public void deleteSubcategory(int name)
     {
         Subcategory subCategory = em.find(Subcategory.class, name);
         em.remove(subCategory);
     }
    
+    @Override
     public Subcategory getSubcategory(int id)
     {
         return em.find(Subcategory.class, id);
     }
    
+    @Override
     public List getAllSubcategories()
     {
         return em.createNamedQuery("Subcategory.getAll").getResultList();

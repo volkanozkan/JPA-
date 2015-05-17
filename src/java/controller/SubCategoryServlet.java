@@ -5,7 +5,8 @@
  */
 package controller;
 
-import db.CategoryDAO;
+import dao.CategoryDAOImpl;
+import dao.SubCategoryDAOImpl;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -13,7 +14,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import db.SubCategoryDAO;
 import javax.ejb.EJB;
 import model.Subcategory;
 import model.Category;
@@ -26,9 +26,9 @@ import org.apache.log4j.Logger;
 @WebServlet(name = "SubCategoryServlet", urlPatterns = {"/SubCategoryServlet"})
 public class SubCategoryServlet extends HttpServlet {
 
-    @EJB private SubCategoryDAO subCategoryDAO;
+    @EJB private SubCategoryDAOImpl subCategoryDAO;
      
-    @EJB private CategoryDAO categoryDAO;
+    @EJB private CategoryDAOImpl categoryDAO;
     
     private Logger logger = Logger.getRootLogger();
 

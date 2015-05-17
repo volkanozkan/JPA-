@@ -5,6 +5,7 @@
  */
 package controller;
 
+import dao.CategoryDAOImpl;
 import java.io.IOException;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
@@ -13,7 +14,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.Category;
-import db.CategoryDAO;
 /**
  *
  * @author VolkanOzkan
@@ -21,7 +21,7 @@ import db.CategoryDAO;
 @WebServlet(name = "GetCategory", urlPatterns = {"/GetCategory"})
 public class GetCategory extends HttpServlet {
     
-     @EJB private CategoryDAO categoryDAO;
+     @EJB private CategoryDAOImpl categoryDAO;
 
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)

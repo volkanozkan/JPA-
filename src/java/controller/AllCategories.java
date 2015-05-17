@@ -6,7 +6,7 @@
 package controller;
 
 
-import db.CategoryDAO;
+import dao.CategoryDAOImpl;
 import java.io.IOException;
 import java.util.List;
 import javax.ejb.EJB;
@@ -25,17 +25,19 @@ import org.apache.log4j.Logger;
 @WebServlet(name = "AllCategories", urlPatterns = {"/AllCategories"})
 public class AllCategories extends HttpServlet {
     
-    @EJB private CategoryDAO categoryDAO;
-    private Logger logger = Logger.getRootLogger();
+   @EJB private CategoryDAOImpl categoryDAO;
+   private Logger logger = Logger.getRootLogger();
     
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+    
+   protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException 
     {
         List list = categoryDAO.getAllCategories();
         request.setAttribute("list", list);
         request.getRequestDispatcher("allcategories.jsp").forward(request, response);
+        
         logger.debug("Categories are listed..");
-
+        
     }
     
     @Override

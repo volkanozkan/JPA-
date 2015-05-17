@@ -5,12 +5,10 @@
  */
 package controller;
 
-import db.SubCategoryDAO;
-import db.ProductDAO;
-import db.SupplierDAO;
-import db.*;
+import dao.ProductDAOImpl;
+import dao.SubCategoryDAOImpl;
+import dao.SupplierDAOImpl;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -29,9 +27,9 @@ import org.apache.log4j.Logger;
 @WebServlet(name = "ProductServlet", urlPatterns = {"/ProductServlet"})
 public class ProductServlet extends HttpServlet {
 
-    @EJB private ProductDAO productDAO;
-    @EJB private SupplierDAO supplierDAO;
-    @EJB private SubCategoryDAO subCategoryDAO;
+    @EJB private ProductDAOImpl productDAO;
+    @EJB private SupplierDAOImpl supplierDAO;
+    @EJB private SubCategoryDAOImpl subCategoryDAO;
     private Logger logger = Logger.getRootLogger();
 
     

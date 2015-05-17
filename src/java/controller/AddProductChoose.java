@@ -5,9 +5,8 @@
  */
 package controller;
 
-import db.SubCategoryDAO;
-import db.SupplierDAO;
-import db.*;
+import dao.SubCategoryDAOImpl;
+import dao.SupplierDAOImpl;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -25,8 +24,8 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "AddProductChoose", urlPatterns = {"/AddProductChoose"})
 public class AddProductChoose extends HttpServlet {
 
-    @EJB private SubCategoryDAO subCategoryDAO;
-     @EJB private SupplierDAO supplierDAO;
+    @EJB private SubCategoryDAOImpl subCategoryDAO;
+     @EJB private SupplierDAOImpl supplierDAO;
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException 

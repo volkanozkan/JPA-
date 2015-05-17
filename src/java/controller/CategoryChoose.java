@@ -5,9 +5,8 @@
  */
 package controller;
 
-import db.CategoryDAO;
+import dao.CategoryDAOImpl;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
@@ -21,9 +20,10 @@ import javax.servlet.http.HttpServletResponse;
  * @author VolkanOzkan
  */
 @WebServlet(name = "CategoryChoose", urlPatterns = {"/CategoryChoose"})
-public class CategoryChoose extends HttpServlet {
+public class CategoryChoose extends HttpServlet 
+{
     
-      @EJB private CategoryDAO categoryDAO;
+      @EJB private CategoryDAOImpl categoryDAO;
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException

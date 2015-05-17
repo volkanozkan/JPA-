@@ -5,7 +5,7 @@
  */
 package controller;
 
-import db.SupplierDAO;
+import dao.SupplierDAOImpl;
 import java.io.IOException;
 import java.util.List;
 import javax.ejb.EJB;
@@ -23,7 +23,7 @@ import javax.servlet.http.HttpServletResponse;
 public class AllSuppliers extends HttpServlet
 {
 
-    @EJB private SupplierDAO supplierDAO;
+    @EJB private SupplierDAOImpl supplierDAO;
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException

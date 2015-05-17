@@ -71,6 +71,12 @@ public class Category implements Serializable {
         this.subcategoryList = subcategoryList;
     }
 
+    public Category(Integer id, String name, Double tax) {
+        this.id = id;
+        this.name = name;
+        this.tax = tax;
+    }
+
     
     
     

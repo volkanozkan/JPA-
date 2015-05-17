@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package db;
+package dao;
 
 import java.util.List;
 import javax.ejb.LocalBean;
@@ -18,15 +18,19 @@ import model.Supplier;
  */
 @Stateless
 @LocalBean
-public class SupplierDAO {
+public class SupplierDAOImpl implements SupplierDAO
+{
     
     @PersistenceContext
     private EntityManager em;
     
-    public List getAllSuppliers() {
+    @Override
+    public List getAllSuppliers()
+    {
         return em.createNamedQuery("Supplier.getAll").getResultList();
     }
     
+    @Override
     public Supplier getSupplier(int id)
     {
         return em.find(Supplier.class, id);

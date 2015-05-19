@@ -34,9 +34,9 @@ public class CategoryDAOImpl implements CategoryDAO
         em.merge(category);
     }
     @Override
-    public void deleteCategory(int name)
+    public void deleteCategory(int id)
     {
-        Category category = em.find(Category.class, name);
+        Category category = em.find(Category.class, id);
         em.remove(category);
     }
      @Override  

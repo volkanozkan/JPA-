@@ -30,21 +30,31 @@ public class AllProducts extends HttpServlet
     @EJB private ProductDAOImpl productDAO;
     private Logger logger = Logger.getRootLogger();
     
-    
-    String country = "US";
-    Currency curr = CurrencyFactory.createCurrency(country);
-    String symbol = curr.getSymbol();
-    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException 
     {
         List list = productDAO.getAllProducts();
         request.setAttribute("list", list);
         
-        List list2 = new LinkedList();
-        list2.add(symbol);
-        request.setAttribute("list2", list2);
-       
+        if(request.getParameter("currency") != null)
+        {
+            String country = request.getParameter("currency");
+            Currency currency = CurrencyFactory.createCurrency(country);
+            String symbol = currency.getSymbol();
+            List list2 = new LinkedList();
+            list2.add(symbol);
+            request.setAttribute("list2", list2);
+            
+        }
+        else
+        {
+            String country = "Turkey" ;
+            Currency currency = CurrencyFactory.createCurrency(country);
+            String symbol = currency.getSymbol();
+            List list2 = new LinkedList();
+            list2.add(symbol);
+            request.setAttribute("list2", list2);
+        }
         request.getRequestDispatcher("allproducts.jsp").forward(request, response);
         logger.debug("Products are listed..");
     }

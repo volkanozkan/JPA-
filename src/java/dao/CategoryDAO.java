@@ -19,7 +19,7 @@ public interface CategoryDAO
     
     public void editCategory(Category category);
     
-    public void deleteCategory(int name);
+    public void deleteCategory(int id);
    
     public Category getCategory(int id);
    

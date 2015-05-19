@@ -78,6 +78,13 @@ public class Product implements Serializable {
         this.barcode = barcode;
     }
 
+    public Product( String barcode, String name, Integer quantity, Double price) {
+        this.barcode = barcode;
+        this.name = name;
+        this.quantity = quantity;
+        this.price = price;
+    }
+    
     public Product(String barcode, String name, Integer quantity, Double price, String attributes, Supplier supplierid, Subcategory subcategoryid) {
         this.barcode = barcode;
         this.name = name;

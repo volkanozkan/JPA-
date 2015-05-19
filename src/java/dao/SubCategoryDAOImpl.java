@@ -35,9 +35,9 @@ public class SubCategoryDAOImpl implements SubCategoryDAO
     }
     
     @Override
-    public void deleteSubcategory(int name)
+    public void deleteSubcategory(int id)
     {
-        Subcategory subCategory = em.find(Subcategory.class, name);
+        Subcategory subCategory = em.find(Subcategory.class, id);
         em.remove(subCategory);
     }
    

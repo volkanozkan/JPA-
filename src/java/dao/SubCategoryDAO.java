@@ -18,7 +18,7 @@ public interface SubCategoryDAO
     
     public void editSubcategory(Subcategory subCategory);
     
-    public void deleteSubcategory(int name);
+    public void deleteSubcategory(int id);
    
     public Subcategory getSubcategory(int id);
    

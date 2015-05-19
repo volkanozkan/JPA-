@@ -35,9 +35,9 @@ public class ProductDAOImpl implements ProductDAO
     }
     
     @Override
-    public void deleteProduct(int name)
+    public void deleteProduct(int id)
     {
-        Product product = em.find(Product.class, name);
+        Product product = em.find(Product.class, id);
         em.remove(product);
     }
    
@@ -52,4 +52,5 @@ public class ProductDAOImpl implements ProductDAO
     {
         return em.createNamedQuery("Product.getAll").getResultList();
     }
+    
 }

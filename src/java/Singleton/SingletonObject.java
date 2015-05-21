@@ -21,6 +21,7 @@ public class SingletonObject
       return instance;
    }
 
+   /// ALL products servletinde kullandım
    public void showMessage()
    {
       System.out.println("*******************This is singleton object : now you are listing products ******************** ");

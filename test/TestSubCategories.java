@@ -4,13 +4,10 @@
  * and open the template in the editor.
  */
 
-
-import dao.CategoryDAOImpl;
-import dao.ProductDAOImpl;
+import dao.SubCategoryDAOImpl;
 import java.sql.SQLException;
-import java.util.LinkedList;
-import java.util.List;
 import model.Category;
+import model.Subcategory;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -21,9 +18,9 @@ import org.junit.Test;
  *
  * @author VolkanOzkan
  */
-public class TestCategories {
+public class TestSubCategories {
     
-    public TestCategories() {
+    public TestSubCategories() {
     }
     
     @BeforeClass
@@ -44,25 +41,23 @@ public class TestCategories {
 
     @Test
     @SuppressWarnings("CallToThreadDumpStack")
-    public void testInsertCategory() throws SQLException 
+    public void testInsertSubCategory() throws SQLException 
     {
         
         String name = "TEST" + System.currentTimeMillis();
-        double tax = 0;
         int id = 0;
         
-        CategoryDAOImpl categoryDAO = new CategoryDAOImpl();
+        SubCategoryDAOImpl dao = new SubCategoryDAOImpl();
        
-        Category category = new Category(id, name, tax);
-        category.setId(id);
-        category.setName(name);
-        category.setTax(tax);
+        Subcategory sub = new Subcategory();
+        sub.setId(id);
+        sub.setName(name);
        
         Category catRtr = null; 
          
         try 
         {
-            categoryDAO.addCategory(category);
+            dao.addSubcategory(sub);
         }
         catch (Exception e)
         {
@@ -72,26 +67,8 @@ public class TestCategories {
         {
             if (catRtr != null) 
             {
-                categoryDAO.deleteCategory(catRtr.getId());
+                dao.deleteSubcategory(catRtr.getId());
             }
         }
-    }
-    
-    @Test
-    @SuppressWarnings("CallToThreadDumpStack")
-    public void testGetAllCategories() throws SQLException 
-    {
-        CategoryDAOImpl categoryDAO = new CategoryDAOImpl();
-
-        List list = new LinkedList();
-        
-        try
-        {
-           list = categoryDAO.getAllCategories();
-        }
-        catch (Exception e)
-        {
-            e.printStackTrace();
-        } 
     }
 }

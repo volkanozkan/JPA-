@@ -36,40 +36,41 @@ public class ProductServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException 
    {
-        String proid = request.getParameter("id");
-        int id = Integer.valueOf(proid);
         
-        String barcod = request.getParameter("barcode");
+       String proid = request.getParameter("id");
+       int id = Integer.valueOf(proid);
+        
+       String barcod = request.getParameter("barcode");
        
-        String name = request.getParameter("name");
+       String name = request.getParameter("name");
         
-        String quantity = request.getParameter("quantity");
-        int quantit = Integer.valueOf(quantity);
+       String quantity = request.getParameter("quantity");
+       int quantit = Integer.valueOf(quantity);
         
-        String price = request.getParameter("price");
-        Double pricee = Double.valueOf(price);
+       String price = request.getParameter("price");
+       Double pricee = Double.valueOf(price);
         
-        String attributes = request.getParameter("attributes");
+       String attributes = request.getParameter("attributes");
         
-        String ctgId = request.getParameter("catid");
-        int catid = Integer.parseInt(ctgId);
+       String ctgId = request.getParameter("catid");
+       int catid = Integer.parseInt(ctgId);
         
-        String sup = request.getParameter("supid");
-        int supid = Integer.parseInt(sup);
+       String sup = request.getParameter("supid");
+       int supid = Integer.parseInt(sup);
+      
+       String operation = request.getParameter("operation");
        
-        String operation = request.getParameter("operation");
+       Subcategory subcategory = subCategoryDAO.getSubcategory(catid);
+       Supplier supplier = supplierDAO.getSupplier(supid);
         
-        Subcategory subcategory = subCategoryDAO.getSubcategory(catid);
-        Supplier supplier = supplierDAO.getSupplier(supid);
-        
-        Product product = new Product(barcod, name, quantit, pricee, attributes, supplier, subcategory);
-        product.setBarcode(barcod);
-        product.setName(name);
-        product.setQuantity(quantit);
-        product.setPrice(pricee);
-        product.setAttributes(attributes);
-        product.setSupplierid(supplier);
-        product.setSubcategoryid(subcategory);
+       Product product = new Product(barcod, name, quantit, pricee, attributes, supplier, subcategory);
+       product.setBarcode(barcod);
+       product.setName(name);
+       product.setQuantity(quantit);
+       product.setPrice(pricee);
+       product.setAttributes(attributes);
+       product.setSupplierid(supplier);
+       product.setSubcategoryid(subcategory);
         
 
        if (operation.equalsIgnoreCase("Add")) 

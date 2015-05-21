@@ -4,13 +4,12 @@
  * and open the template in the editor.
  */
 
-
-import dao.CategoryDAOImpl;
 import dao.ProductDAOImpl;
 import java.sql.SQLException;
 import java.util.LinkedList;
 import java.util.List;
 import model.Category;
+import model.Product;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -21,9 +20,9 @@ import org.junit.Test;
  *
  * @author VolkanOzkan
  */
-public class TestCategories {
+public class TestProduct {
     
-    public TestCategories() {
+    public TestProduct() {
     }
     
     @BeforeClass
@@ -44,25 +43,24 @@ public class TestCategories {
 
     @Test
     @SuppressWarnings("CallToThreadDumpStack")
-    public void testInsertCategory() throws SQLException 
+    public void testInsertProduct() throws SQLException 
     {
         
         String name = "TEST" + System.currentTimeMillis();
         double tax = 0;
         int id = 0;
         
-        CategoryDAOImpl categoryDAO = new CategoryDAOImpl();
+        ProductDAOImpl productDAO = new ProductDAOImpl();
        
-        Category category = new Category(id, name, tax);
-        category.setId(id);
-        category.setName(name);
-        category.setTax(tax);
+        Product pro = new Product();
+        pro.setId(id);
+        pro.setName(name);
        
         Category catRtr = null; 
          
         try 
         {
-            categoryDAO.addCategory(category);
+            productDAO.addProduct(pro);
         }
         catch (Exception e)
         {
@@ -72,22 +70,22 @@ public class TestCategories {
         {
             if (catRtr != null) 
             {
-                categoryDAO.deleteCategory(catRtr.getId());
+                productDAO.deleteProduct(catRtr.getId());
             }
         }
     }
     
     @Test
     @SuppressWarnings("CallToThreadDumpStack")
-    public void testGetAllCategories() throws SQLException 
+    public void testGetAllProduct() throws SQLException 
     {
-        CategoryDAOImpl categoryDAO = new CategoryDAOImpl();
+        ProductDAOImpl productDAO = new ProductDAOImpl();
 
         List list = new LinkedList();
         
         try
         {
-           list = categoryDAO.getAllCategories();
+           list = productDAO.getAllProducts();
         }
         catch (Exception e)
         {

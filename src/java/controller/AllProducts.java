@@ -5,11 +5,11 @@
  */
 package controller;
 
+import Singleton.SingletonObject;
 import dao.ProductDAOImpl;
 import factoryCurrency.Currency;
 import factoryCurrency.CurrencyFactory;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.LinkedList;
 import java.util.List;
 import javax.ejb.EJB;
@@ -27,12 +27,21 @@ import org.apache.log4j.Logger;
 @WebServlet(name = "AllProducts", urlPatterns = {"/AllProducts"})
 public class AllProducts extends HttpServlet 
 {
+    
     @EJB private ProductDAOImpl productDAO;
     private Logger logger = Logger.getRootLogger();
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException 
     {
+        
+        //Get object 
+         SingletonObject object = SingletonObject.getInstance();
+         //show the message
+         object.showMessage();
+        
+        
+        
         List list = productDAO.getAllProducts();
         request.setAttribute("list", list);
         

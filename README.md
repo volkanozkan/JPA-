@@ -1,3 +1,1 @@
-# SoftwareHw -- JPA
-  Sofware Engineering Dersi Ödevim.
-  ****JPA****
+# Simple Shop With Usign JPA and JSP

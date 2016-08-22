@@ -1,1 +1,1 @@
-# Simple Shop With Usign JPA and JSP
+# Simple Shop Store With Usign JPA and JSP
